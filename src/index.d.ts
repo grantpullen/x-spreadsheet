@@ -199,7 +199,7 @@ declare module 'x-data-spreadsheet' {
      */
     static locale(lang: string, message: object): void;
 
-    setFocus(ri, ci, indexesUpdated): void;
+    setFocus(ri: number, ci: number, indexesUpdated: boolean): void;
   }
   global {
     interface Window {
