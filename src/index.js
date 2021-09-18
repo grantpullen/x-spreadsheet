@@ -123,6 +123,10 @@ class Spreadsheet {
   static locale(lang, message) {
     locale(lang, message);
   }
+
+  setFocus(ri, ci, indexesUpdated = true) {
+    this.sheet.selector.set(ri, ci, indexesUpdated);
+  }
 }
 
 const spreadsheet = (el, options = {}) => new Spreadsheet(el, options);
