@@ -198,10 +198,12 @@ declare module 'x-data-spreadsheet' {
      * @param message
      */
     static locale(lang: string, message: object): void;
+
+    setFocus(ri, ci, indexesUpdated): void;
   }
   global {
     interface Window {
-      x_spreadsheet(container: string | HTMLElement, opts?: Options): Spreadsheet; 
+      x_spreadsheet(container: string | HTMLElement, opts?: Options): Spreadsheet;
     }
   }
 }
