@@ -978,4 +978,8 @@ export default class Sheet {
       top: rows.height,
     };
   }
+
+  selectCell(ri,ci) {
+    selectorSet.call(this, false, ri, ci);
+  }
 }

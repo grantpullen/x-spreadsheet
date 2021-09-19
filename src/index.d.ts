@@ -200,6 +200,7 @@ declare module 'x-data-spreadsheet' {
     static locale(lang: string, message: object): void;
 
     setFocus(ri: number, ci: number, indexesUpdated: boolean): void;
+    setCellFocus(ri: number, ci: number): void;
   }
   global {
     interface Window {

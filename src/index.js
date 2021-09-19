@@ -127,6 +127,10 @@ class Spreadsheet {
   setFocus(ri, ci, indexesUpdated = true) {
     this.sheet.selector.set(ri, ci, indexesUpdated);
   }
+
+  setCellFocus(ri, ci) {
+    this.sheet.selectCell(ri, ci)
+  }
 }
 
 const spreadsheet = (el, options = {}) => new Spreadsheet(el, options);
