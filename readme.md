@@ -10,6 +10,8 @@
 [![Join the chat at https://gitter.im/x-datav/spreadsheet](https://badges.gitter.im/x-datav/spreadsheet.svg)](https://gitter.im/x-datav/spreadsheet?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 > A web-based JavaScript spreadsheet
+ 
+This is a fork of https://github.com/myliang/x-spreadsheet please refer to [fork.md](https://github.com/grantpullen/x-spreadsheet/blob/master/fork.md) for more details about the fork.
 
 <p align="center">
   <a href="https://github.com/myliang/x-spreadsheet">
@@ -18,7 +20,7 @@
 </p>
 
 ## Document
-* en
+* ennpm build
 * [zh-cn 中文](https://hondrytravis.github.io/x-spreadsheet-doc/)
 
 ## CDN
