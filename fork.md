@@ -14,12 +14,16 @@ Add the forked version
 
 ```npm install grantpullen/x-spreadsheet```
 
+alternately specify the version
+
+```npm install grantpullen/x-spreadsheet#v1.0.0```
+
 
 ## Fork Changes
-* added ```setCellFocus(ri: number, ci: number): void;``` which is used to set the focus the specified cell.
+* added ```setCellFocus(ri: number, ci: number): void;``` which is used to set the focus to the specified cell.
 
 ```javascript
 const s = new Spreadsheet("#x-spreadsheet-demo")
-s.setCellFocus(3, 3);;
+s.setCellFocus(3, 3);
 ```
 * removed auto increment of numbers in cells when dragging over a range.
