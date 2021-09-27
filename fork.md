@@ -1,29 +1,81 @@
-# Changes and dev info about this fork
-### Get changes from upstream
+# changes and dev info about this fork
+### get changes from upstream
 ```git merge upstream/main```
 
-### Compile
+### compile
 ```npm run-script build```
 
-### Replace Upstream "original" version with forked version
-Remove the old version from the existing project (run below command in the project folder)
+### replace upstream "original" version with forked version
+remove the old version from the existing project (run below command in the project folder)
 
 ```npm uninstall x-spreadsheet```
 
-Add the forked version
+add the forked version
 
 ```npm install grantpullen/x-spreadsheet```
 
 alternately specify the version
 
-```npm install grantpullen/x-spreadsheet#v1.0.0```
+```q```
 
 
-## Fork Changes
-* added ```setCellFocus(ri: number, ci: number): void;``` which is used to set the focus to the specified cell.
+## fork changes
+* added ```setcellfocus(ri: number, ci: number): void;``` which is used to set the focus to the specified cell.
+  - the parameter ri is the row number.
+  - the parameter ci is the column number.
 
 ```javascript
-const s = new Spreadsheet("#x-spreadsheet-demo")
-s.setCellFocus(3, 3);
+const s = new spreadsheet("#x-spreadsheet-demo");
+s.setcellfocus(3, 3);
 ```
-* removed auto increment of numbers in cells when dragging over a range.
+* Added setting in constructor to prevent Auto increment of numbers in cells when dragging over a range can be disabled via boolean setting in the constructor named disableAutoIncrement.
+```javascript
+const s  = new Spreadsheet('#sheetManagement', {
+      disableAutoIncrement: true,
+    });
+```
+
+* Exposed row insertion via ```insertRow(n: number): void```
+  - rows are inserted before the current row.
+  - the parameter n is the number of rows to be inserted.
+  - a call to this function does not refresh the UI, (a call to reload can be used to force a refresh)
+```javascript
+const s = new spreadsheet("#x-spreadsheet-demo");
+this.s.insertRow(1);
+this.s.reload();
+```
+
+* Exposed row removal via ```deleteRow(): void```
+  - the current row is the row which will be deleted.
+  - a call to this function does not refresh the UI, (a call to reload can be used to force a refresh)
+```javascript
+const s = new spreadsheet("#x-spreadsheet-demo");
+this.s.deleteRow();
+this.s.reload();
+```
+
+* Exposed column insertion via ```inserColumn(n: number): void```
+    - columns are inserted before the current column.
+    - the parameter n is the number of columns to be inserted.
+    - a call to this function does not refresh the UI, (a call to reload can be used to force a refresh)
+```javascript
+const s = new spreadsheet("#x-spreadsheet-demo");
+this.s.insertColumn(1);
+this.s.reload();
+```
+
+* Exposed column removal via ```deleteColumn(): void```
+    - the current column is the column which will be deleted.
+    - a call to this function does not refresh the UI, (a call to reload can be used to force a refresh)
+```javascript
+const s = new spreadsheet("#x-spreadsheet-demo");
+this.s.deleteColumn();
+this.s.reload();
+```
+
+* Exposed sheet reload  removal via ```reload(): void```
+```javascript
+const s = new spreadsheet("#x-spreadsheet-demo");
+this.s.insertColumn(1);
+this.s.reload();
+```

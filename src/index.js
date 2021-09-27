@@ -139,6 +139,26 @@ class Spreadsheet {
   insertRow(n = 1) {
     this.sheet.data.insert('row', n);
   }
+
+  // delete the current row
+  deleteRow() {
+    this.sheet.data.delete('row');
+  }
+
+  // insert n number of columns after the current column
+  insertColumn(n = 1) {
+    this.sheet.data.insert('column', n);
+  }
+
+  // delete the current column
+  deleteColumn() {
+    this.sheet.data.delete('column');
+  }
+
+  // reload the sheet
+  reload() {
+    this.sheet.reload();
+  }
 }
 
 const spreadsheet = (el, options = {}) => new Spreadsheet(el, options);
