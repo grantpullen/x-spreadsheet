@@ -2,11 +2,12 @@ import helper from './helper';
 import { expr2expr } from './alphabet';
 
 class Rows {
-  constructor({ len, height }) {
+  constructor({ len, height }, disableAutoIncrement = false) {
     this._ = {};
     this.len = len;
     // default row height
     this.height = height;
+    this.disableAutoIncrement = disableAutoIncrement;
   }
 
   getHeight(ri) {
@@ -156,16 +157,16 @@ class Rows {
                       if (/^\d+$/.test(word)) return word;
                       return expr2expr(word, xn, yn);
                     });
-                  }/* else if ((rn <= 1 && cn > 1 && (dsri > eri || deri < sri))
+                  } else if (!this.disableAutoIncrement && ((rn <= 1 && cn > 1 && (dsri > eri || deri < sri))
                     || (cn <= 1 && rn > 1 && (dsci > eci || deci < sci))
-                    || (rn <= 1 && cn <= 1)) {
+                    || (rn <= 1 && cn <= 1))) {
                     const result = /[\\.\d]+$/.exec(text);
                     // console.log('result:', result);
                     if (result !== null) {
                       const index = Number(result[0]) + n - 1;
                       ncell.text = text.substring(0, result.index) + index;
                     }
-                  }*/
+                  }
                 }
                 this.setCell(nri, nci, ncell, what);
                 cb(nri, nci, ncell);

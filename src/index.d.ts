@@ -16,6 +16,7 @@ declare module 'x-data-spreadsheet' {
       right?: ExtendToolbarOption[],
     };
     autoFocus?: boolean;
+    disableAutoIncrement?: boolean;
     view?: {
       height: () => number;
       width: () => number;
@@ -202,6 +203,18 @@ declare module 'x-data-spreadsheet' {
 
     setFocus(ri: number, ci: number, indexesUpdated: boolean): void;
     setCellFocus(ri: number, ci: number): void;
+    // insert n number of rows after the current row
+    insertRow(n: number): void;
+    // delete the current column
+    deleteRow(): void;
+
+    // insert n number of columns after the current column
+    insertColumn(n: number): void;
+    // delete the current column
+    deleteColumn(): void;
+    // reload the sheet
+    reload(): void;
+
   }
   global {
     interface Window {

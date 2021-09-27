@@ -132,7 +132,12 @@ class Spreadsheet {
   }
 
   setCellFocus(ri, ci) {
-    this.sheet.selectCell(ri, ci)
+    this.sheet.selectCell(ri, ci);
+  }
+
+  // insert n number of rows after the current row
+  insertRow(n = 1) {
+    this.sheet.data.insert('row', n);
   }
 }
 
