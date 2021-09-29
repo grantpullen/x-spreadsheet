@@ -159,6 +159,11 @@ class Spreadsheet {
   reload() {
     this.sheet.reload();
   }
+
+  // set currently selected cells edit mode
+  cellEditable(canEdit) {
+    this.sheet.data.setSelectedCellAttr('editable', canEdit);
+  }
 }
 
 const spreadsheet = (el, options = {}) => new Spreadsheet(el, options);

@@ -2,12 +2,13 @@ import helper from './helper';
 import { expr2expr } from './alphabet';
 
 class Rows {
-  constructor({ len, height }, disableAutoIncrement = false) {
+  constructor({ len, height }, customSettings) {
     this._ = {};
     this.len = len;
     // default row height
     this.height = height;
-    this.disableAutoIncrement = disableAutoIncrement;
+    this.disableAutoIncrement = customSettings.disableAutoIncrement;
+    this.copyEditableProperty = customSettings.copyEditableProperty;
   }
 
   getHeight(ri) {
@@ -167,6 +168,10 @@ class Rows {
                       ncell.text = text.substring(0, result.index) + index;
                     }
                   }
+                }
+                console.log('ncell:', JSON.stringify(ncell));
+                if (!this.copyEditableProperty) {
+                  ncell.editable = true;
                 }
                 this.setCell(nri, nci, ncell, what);
                 cb(nri, nci, ncell);

@@ -78,6 +78,10 @@ const defaultSettings = {
   showToolbar: true,
   showContextmenu: true,
   showBottomBar: true,
+  customSettings: {
+    disableAutoIncrement: false,
+    copyEditableProperty: true,
+  },
   row: {
     len: 100,
     height: 25,
@@ -335,7 +339,7 @@ export default class DataProxy {
     this.freeze = [0, 0];
     this.styles = []; // Array<Style>
     this.merges = new Merges(); // [CellRange, ...]
-    this.rows = new Rows(this.settings.row, this.settings.disableAutoIncrement);
+    this.rows = new Rows(this.settings.row, this.settings.customSettings);
     this.cols = new Cols(this.settings.col);
     this.validations = new Validations();
     this.hyperlinks = {};

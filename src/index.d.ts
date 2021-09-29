@@ -16,7 +16,10 @@ declare module 'x-data-spreadsheet' {
       right?: ExtendToolbarOption[],
     };
     autoFocus?: boolean;
-    disableAutoIncrement?: boolean;
+    customSettings?: {
+      disableAutoIncrement?: boolean,
+      copyEditableProperty?: boolean,
+    };
     view?: {
       height: () => number;
       width: () => number;
@@ -180,7 +183,7 @@ declare module 'x-data-spreadsheet' {
      */
     deleteSheet(): void;
 
-    /**s
+    /**
      * load data
      * @param json
      */
@@ -202,18 +205,47 @@ declare module 'x-data-spreadsheet' {
     static locale(lang: string, message: object): void;
 
     setFocus(ri: number, ci: number, indexesUpdated: boolean): void;
+
+    /**
+     * Sets the focus to the specified cell
+     * @param ri row index
+     * @param ci column index
+     */
     setCellFocus(ri: number, ci: number): void;
-    // insert n number of rows after the current row
+
+    /**
+     * insert n number of rows after the current row
+     * @param n is the number of rows to insert
+     */
     insertRow(n: number): void;
-    // delete the current column
+
+    /**
+     * delete the selected row(s)
+     */
     deleteRow(): void;
 
-    // insert n number of columns after the current column
+    /**
+     * insert n number of columns after the current column
+     * @param n is the number of columns to insert
+     */
     insertColumn(n: number): void;
-    // delete the current column
+
+    /**
+     * delete the current column
+     */
     deleteColumn(): void;
-    // reload the sheet
+
+    /**
+     * reload the sheet
+     */
     reload(): void;
+
+    /**
+     * set the editable property of a cell
+     * @param canEdit sets the cells editable property
+     */
+    cellEditable(canEdit: boolean): void;
+
 
   }
   global {

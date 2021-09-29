@@ -20,18 +20,26 @@ alternately specify the version
 
 
 ## fork changes
-* added ```setcellfocus(ri: number, ci: number): void;``` which is used to set the focus to the specified cell.
+* added ```setCellFocus(ri: number, ci: number): void;``` which is used to set the focus to the specified cell.
   - the parameter ri is the row number.
   - the parameter ci is the column number.
 
 ```javascript
 const s = new spreadsheet("#x-spreadsheet-demo");
-s.setcellfocus(3, 3);
+s.setCellFocus(3, 3);
 ```
-* Added setting in constructor to prevent Auto increment of numbers in cells when dragging over a range can be disabled via boolean setting in the constructor named disableAutoIncrement.
+* Added optional```customSettings?: {
+  disableAutoIncrement?: boolean,
+  copyEditableProperty?: boolean,
+  };``` in constructor.
+  - `disableAutoIncrement` is used to prevent auto increment of numbers in cells when dragging over a range can be disabled via boolean setting in the constructor named disableAutoIncrement.
+  - `copyEditableProperty` is used to prevent propagation of the editable property when performing drag/copy & paste operations.
 ```javascript
 const s  = new Spreadsheet('#sheetManagement', {
-      disableAutoIncrement: true,
+        customSettings: {
+          disableAutoIncrement: true,
+          copyEditableProperty: true,
+        },
     });
 ```
 
@@ -73,9 +81,16 @@ this.s.deleteColumn();
 this.s.reload();
 ```
 
-* Exposed sheet reload  removal via ```reload(): void```
+* Exposed sheet reload via ```reload(): void```
 ```javascript
 const s = new spreadsheet("#x-spreadsheet-demo");
 this.s.insertColumn(1);
+this.s.reload();
+```
+* Expose ability to set cell editable property via `cellEditable(canEdit: boolean): void;`
+```javascript
+const s = new spreadsheet("#x-spreadsheet-demo");
+this.s.insertRow(1);
+this.s.cellEditable(false);
 this.s.reload();
 ```
